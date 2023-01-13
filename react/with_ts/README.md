@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# React + TypeScript Schedule App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1️⃣ 개요
 
-## Available Scripts
+- 현재 프론트엔드 직무에서 가장 많이 쓰이는 리액트와 높은 호환성과 디버깅을 지닌 타입 스크립트를 보다 능숙하게 사용하기 위해 진행하는 프로젝트입니다.
 
-In the project directory, you can run:
+- 추후에 Vue를 사용하여 같은 기능의 앱 제작 예정
 
-### `npm start`
+## 2️⃣ 목표
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> 리액트와 타입스크립트를 이용하여 일정 체크 앱 제작
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 3️⃣ 앱 설계
 
-### `npm test`
+### ⭐️ 앱의 핵심 기능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> **_어떠한 기간안에 할 일을 작성 후, 날짜별로 얼마나 달성하였는지 시각적으로 진도율을 보여준다._**
 
-### `npm run build`
+- **단일 페이지**로 구성하여 손쉬운 사용이 되게끔 제작한다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **CRUD 기능**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - Create : 할 일을 작성한다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - Read : 날짜별로 할 일을 조회한다.
 
-### `npm run eject`
+   - Update : 수정항목이 있으면 수정한다. / 달성 여부를 체크한다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   - Delete : 딱히 없음
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **날짜 확인 기능**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   - 작성한 할 일들을 날짜별로 분배할 수 있어야 한다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   - 현재 날짜를 통하여 해야할 일이 무엇인지 알아야 한다.
 
-## Learn More
+3. **진도율 확인 기능**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - 작성한 할 일이 얼마나 달성되었는지 시각적으로 표현되어야 한다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   - 진도율 바를 통하여 구현 예정
+
+---
