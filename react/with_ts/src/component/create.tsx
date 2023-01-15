@@ -22,7 +22,7 @@ function Create() {
         break;
     }
   };
-  //   const registerTodo = () => {};
+  const registerTodo = () => {};
   return (
     <div>
       <input placeholder="할 일을 입력하세요" name="text" />
