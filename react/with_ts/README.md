@@ -36,6 +36,12 @@
 
    - 현재 날짜를 통하여 해야할 일이 무엇인지 알아야 한다.
 
+   - 날짜 선택 라이브러리 사용 **React Datepicker**
+
+     - `npm install react-datepicker --save`
+
+       > 모듈 import시, 경로 오류가 발생하여 `npm i --save-dev @types/react-datepicker` 를 추가로 install 하였음
+
 3. **진도율 확인 기능**
 
    - 작성한 할 일이 얼마나 달성되었는지 시각적으로 표현되어야 한다.
