@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from "react";
-import { todolist } from "../type";
+import Calendar from "../calendar";
+import { todolist } from "../../type";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
@@ -30,19 +31,24 @@ function Create() {
   console.log(todolist);
   return (
     <div>
-      <input
-        placeholder="날짜 입력"
-        name="date"
-        onChange={handleDate}
-        value={todoDate}
-      />
-      <input
-        placeholder="할 일을 입력하세요"
-        name="text"
-        value={todoText}
-        onChange={handleText}
-      />
-      <button onClick={registerTodo}>등록</button>
+      <div>
+        <input
+          placeholder="날짜 입력"
+          name="date"
+          onChange={handleDate}
+          value={todoDate}
+        />
+        <input
+          placeholder="할 일을 입력하세요"
+          name="text"
+          value={todoText}
+          onChange={handleText}
+        />
+        <button onClick={registerTodo}>등록</button>
+      </div>
+      <div>
+        <Calendar />
+      </div>
     </div>
   );
 }

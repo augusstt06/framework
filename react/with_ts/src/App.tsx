@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/App.css";
-import Create from "./component/create";
+import Create from "./component/todo/create";
 
 function App() {
   return (
