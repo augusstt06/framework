@@ -1,32 +1,49 @@
-import React, { useState } from "react";
-import { type_todo } from "../type";
+import React, { FormEvent, useState } from "react";
+import { useEffect } from "react";
+import { todolist, todo_prop } from "../type";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
 function Create() {
-  const [todoDate, setTodoDate] = useState<number>(0);
+  const [todoDate, setTodoDate] = useState<string>("");
   const [todoText, setTodoText] = useState<string>("");
   const [todoComplete, setTodoComplete] = useState<boolean>(false);
 
-  const todos = Array<type_todo>;
+  const [todolist, setTodolist] = useState<todolist[]>([]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    switch (e.target.name) {
-      case "text":
-        setTodoText(e.target.value);
-        break;
-      case "date":
-        setTodoDate(Number(e.target.value));
-        break;
-      default:
-        break;
-    }
+  const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoText(e.target.value);
   };
-  const registerTodo = () => {};
+  const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoDate(e.target.value);
+  };
+
+  const registerTodo = (e: FormEvent<HTMLButtonElement>) => {
+    const newTodo = {
+      date: todoDate,
+      todolist: { text: todoText, complete: false },
+    };
+    setTodolist([...todolist, newTodo]);
+    setTodoText("");
+    setTodoDate("");
+    e.preventDefault();
+  };
+  console.log(todolist);
   return (
     <div>
-      <input placeholder="할 일을 입력하세요" name="text" />
-      <button>등록</button>
+      <input
+        placeholder="날짜 입력"
+        name="date"
+        onChange={handleDate}
+        value={todoDate}
+      />
+      <input
+        placeholder="할 일을 입력하세요"
+        name="text"
+        value={todoText}
+        onChange={handleText}
+      />
+      <button onClick={registerTodo}>등록</button>
     </div>
   );
 }
