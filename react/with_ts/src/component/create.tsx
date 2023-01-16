@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { useEffect } from "react";
-import { todolist, todo_prop } from "../type";
+import { todolist } from "../type";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
