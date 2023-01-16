@@ -15,7 +15,7 @@ function Todo() {
           selected={startDate}
           onChange={(date: Date) => setStartDate(date)}
         />
-        <Create />
+        <Create date={startDate} />
       </div>
     </div>
   );
