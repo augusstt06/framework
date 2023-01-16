@@ -1,14 +1,17 @@
-import React, { ChangeEventHandler, useRef, useState } from "react";
-
-import { format, isValid, parse } from "date-fns";
-import FocusTrap from "focus-trap-react";
-import { DayPicker } from "react-day-picker";
-import { usePopper } from "react-popper";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Calendar() {
+  const [startDate, setStartDate] = useState<Date>(new Date());
+
   return (
     <div>
-      <DayPicker />
+      <div>Date Picker</div>
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+      />
     </div>
   );
 }
