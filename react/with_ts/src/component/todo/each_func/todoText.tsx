@@ -8,3 +8,4 @@ function TodoText({ complete, children }: todoText) {
     </>
   );
 }
+export default TodoText;
