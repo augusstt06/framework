@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { todolist } from "../type/index";
+import { todolist } from "../../type";
 
 import "react-datepicker/dist/react-datepicker.css";
 
