@@ -7,7 +7,7 @@ export interface todo_prop {
 
 export interface todolist {
   date: string | undefined;
-  todolist: todo_prop;
+  todo: todo_prop;
 }
 
 export interface checkbox {

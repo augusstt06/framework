@@ -21,14 +21,14 @@ function Todo() {
     const newTodo = {
       // 우선 변환만 시켜놓고 추후에 수정
       date: String(startDate),
-      todolist: { text: todoText, complete: false },
+      todo: { text: todoText, complete: false },
     };
     setTodolist([...todolist, newTodo]);
     setTodoText("");
     setStartDate(new Date());
     e.preventDefault();
   };
-  console.log(todolist);
+
   return (
     <div>
       <div>
@@ -43,8 +43,13 @@ function Todo() {
           onChange={handleText}
         />
         <button onClick={registerTodo}>등록</button>
-        <TodoList todolist={todolist} setTodolist={setTodolist} />
       </div>
+      <div></div>
+      {todolist.map((data) => (
+        <div key={data.date}>
+          <TodoList date={data.date} todo={data.todo} />
+        </div>
+      ))}
     </div>
   );
 }
