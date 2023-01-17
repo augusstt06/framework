@@ -6,7 +6,7 @@ import TodoList from "./each_func/todolist";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
-
+// todolist를 set으로 바꾸기
 function Todo() {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [todoText, setTodoText] = useState<string>("");
@@ -44,8 +44,11 @@ function Todo() {
   const modifyTodo = () => {
     setNewTodo({
       ...newTodo,
+      complete: true,
     });
+    console.log(newTodo);
   };
+  console.log(todolist);
 
   return (
     <div>
@@ -69,6 +72,7 @@ function Todo() {
             date={data.date}
             text={data.text}
             complete={data.complete}
+            modifyTodo={modifyTodo}
           />
         </div>
       ))}

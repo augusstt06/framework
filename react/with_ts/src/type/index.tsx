@@ -17,7 +17,10 @@ export interface todoText {
   children: React.ReactNode;
 }
 
-export interface todolistProps {
-  setTodolist: React.Dispatch<React.SetStateAction<Array<todolist>>>;
-  todolist: todolist[];
+export interface todolistProps extends todolist {
+  modifyTodo: () => void;
 }
+// export interface todolistProps {
+//   setTodolist: React.Dispatch<React.SetStateAction<Array<todolist>>>;
+//   todolist: todolist[];
+// }
