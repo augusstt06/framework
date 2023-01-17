@@ -1,10 +1,11 @@
-import React from "react";
+import React, { ReactElement } from "react";
+import { checkbox } from "../../../type";
+import "../../../css/checkbox.css";
 
-function Checkbox() {
+function Checkbox({ complete, onClick }: checkbox) {
   return (
-    <div>
-      <div>체크박스</div>
-      <input type="checkbox" />
+    <div className="container" onClick={onClick}>
+      <div className="checkIcon">{complete && "✔︎"}</div>
     </div>
   );
 }
