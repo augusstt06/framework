@@ -9,10 +9,10 @@ import Checkbox from "./checkbox";
 function TodoList(props: todolist) {
   return (
     <div>
-      <TodoText complete={props.todo.complete}>
+      <TodoText complete={props.complete}>
         <h2>날짜 : {props.date}</h2>
-        <h2>{props.todo.text}</h2>
-        <h2>완료 여부 : {props.todo.complete ? "완료" : "미완료"} </h2>
+        <h2>{props.text}</h2>
+        <h2>완료 여부 : {props.complete ? "완료" : "미완료"} </h2>
       </TodoText>
       <Checkbox />
     </div>

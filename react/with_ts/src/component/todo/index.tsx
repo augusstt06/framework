@@ -17,16 +17,34 @@ function Todo() {
 
   const [todolist, setTodolist] = useState<todolist[]>([]);
 
+  const [newTodo, setNewTodo] = useState<todolist>({
+    date: "",
+    text: "",
+    complete: false,
+  });
+
   const registerTodo = (e: FormEvent<HTMLButtonElement>) => {
     const newTodo = {
       // 우선 변환만 시켜놓고 추후에 수정
       date: String(startDate),
-      todo: { text: todoText, complete: false },
+      text: todoText,
+      complete: false,
     };
+    setNewTodo({
+      date: String(startDate),
+      text: todoText,
+      complete: false,
+    });
     setTodolist([...todolist, newTodo]);
     setTodoText("");
     setStartDate(new Date());
     e.preventDefault();
+  };
+
+  const modifyTodo = () => {
+    setNewTodo({
+      ...newTodo,
+    });
   };
 
   return (
@@ -47,7 +65,11 @@ function Todo() {
       <div></div>
       {todolist.map((data) => (
         <div key={data.date}>
-          <TodoList date={data.date} todo={data.todo} />
+          <TodoList
+            date={data.date}
+            text={data.text}
+            complete={data.complete}
+          />
         </div>
       ))}
     </div>

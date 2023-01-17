@@ -1,13 +1,10 @@
 import React from "react";
 
-export interface todo_prop {
-  text: string;
-  complete: boolean;
-}
-
 export interface todolist {
   date: string | undefined;
-  todo: todo_prop;
+
+  text: string;
+  complete: boolean;
 }
 
 export interface checkbox {
