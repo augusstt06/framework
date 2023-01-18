@@ -1,5 +1,5 @@
-import Reac, { useState } from "react";
-import { todolist, todolistProps } from "../../../type";
+import React, { useState } from "react";
+import { todolistProps } from "../../../type";
 import TodoText from "./todoText";
 import Checkbox from "./checkbox";
 
@@ -9,18 +9,18 @@ import Checkbox from "./checkbox";
 function TodoList(props: todolistProps) {
   const [complete, setComplete] = useState<boolean>(false);
 
-  const todoItem = props.todoItem;
-  const setTodoItem = props.setTodoItem;
+  const completeTodo = props.completeTodo;
+  const setCompleteTodo = props.setCompleteTodo;
 
   const checkboxHandler = (date: string, text: string, isComplete: boolean) => {
     if (isComplete) {
-      todoItem.add(date);
-      todoItem.add(text);
-      setTodoItem(todoItem);
-    } else if (!isComplete && todoItem.has(text)) {
-      todoItem.delete(date);
-      todoItem.delete(text);
-      setTodoItem(todoItem);
+      completeTodo.add(date);
+      completeTodo.add(text);
+      setCompleteTodo(completeTodo);
+    } else if (!isComplete && completeTodo.has(text)) {
+      completeTodo.delete(date);
+      completeTodo.delete(text);
+      setCompleteTodo(completeTodo);
     }
   };
   const completeHandler = ({ target }: any) => {

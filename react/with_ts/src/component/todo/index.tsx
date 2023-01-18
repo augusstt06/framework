@@ -16,10 +16,11 @@ function Todo() {
   };
 
   const [todolist, setTodolist] = useState<todolist[]>([]);
-  // set으로 테스트
-  const [todoItem, setTodoItem] = useState(new Set());
-  console.log(todoItem, "이건 ?");
 
+  const [completeTodo, setCompleteTodo] = useState(new Set());
+  console.log(completeTodo, "완료된 할것들");
+
+  // set에 들어갈 객체 수정하기
   const [newTodo, setNewTodo] = useState<todolist>({
     date: "",
     text: "",
@@ -28,7 +29,7 @@ function Todo() {
 
   const registerTodo = (e: FormEvent<HTMLButtonElement>) => {
     const newTodo = {
-      // 우선 변환만 시켜놓고 추후에 수정
+      // 우선 변환만 시켜놓고 추후에 수정 => 날짜 타입 수정
       date: String(startDate),
       text: todoText,
       complete: false,
@@ -43,15 +44,6 @@ function Todo() {
     setStartDate(new Date());
     e.preventDefault();
   };
-
-  const modifyTodo = () => {
-    setNewTodo({
-      ...newTodo,
-      complete: true,
-    });
-    console.log(newTodo, "체크 누ㅁ");
-  };
-  console.log(todolist);
 
   return (
     <div>
@@ -74,8 +66,8 @@ function Todo() {
           <TodoList
             date={data.date}
             text={data.text}
-            todoItem={todoItem}
-            setTodoItem={setTodoItem}
+            completeTodo={completeTodo}
+            setCompleteTodo={setCompleteTodo}
           />
         </div>
       ))}
