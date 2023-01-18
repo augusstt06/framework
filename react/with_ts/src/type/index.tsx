@@ -1,4 +1,4 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 import { Set } from "typescript";
 
 export interface todolist {
@@ -19,6 +19,6 @@ export interface todoText {
 }
 
 export interface todolistProps extends todolist {
-  todoItem: Set<any>;
-  setTodoItem: React.Dispatch<React.SetStateAction<any>>;
+  completeTodo: Set<any>;
+  setCompleteTodo: React.Dispatch<React.SetStateAction<any>>;
 }
