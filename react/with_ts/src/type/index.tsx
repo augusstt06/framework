@@ -1,15 +1,16 @@
-import React from "react";
+import React, { SetStateAction } from "react";
+import { Set } from "typescript";
 
 export interface todolist {
-  date: string | undefined;
-
+  date: string;
   text: string;
-  complete: boolean;
+  complete?: boolean;
 }
 
 export interface checkbox {
   complete?: boolean;
-  onClick?(): void;
+
+  completeHandler: ({ target }: any) => void;
 }
 
 export interface todoText {
@@ -18,9 +19,6 @@ export interface todoText {
 }
 
 export interface todolistProps extends todolist {
-  modifyTodo: () => void;
+  todoItem: Set<any>;
+  setTodoItem: React.Dispatch<React.SetStateAction<any>>;
 }
-// export interface todolistProps {
-//   setTodolist: React.Dispatch<React.SetStateAction<Array<todolist>>>;
-//   todolist: todolist[];
-// }
