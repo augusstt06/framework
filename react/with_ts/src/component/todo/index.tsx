@@ -16,6 +16,9 @@ function Todo() {
   };
 
   const [todolist, setTodolist] = useState<todolist[]>([]);
+  // set으로 테스트
+  const [todoItem, setTodoItem] = useState(new Set());
+  console.log(todoItem, "이건 ?");
 
   const [newTodo, setNewTodo] = useState<todolist>({
     date: "",
@@ -46,7 +49,7 @@ function Todo() {
       ...newTodo,
       complete: true,
     });
-    console.log(newTodo);
+    console.log(newTodo, "체크 누ㅁ");
   };
   console.log(todolist);
 
@@ -71,8 +74,8 @@ function Todo() {
           <TodoList
             date={data.date}
             text={data.text}
-            complete={data.complete}
-            modifyTodo={modifyTodo}
+            todoItem={todoItem}
+            setTodoItem={setTodoItem}
           />
         </div>
       ))}
