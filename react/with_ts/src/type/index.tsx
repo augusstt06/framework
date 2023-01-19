@@ -1,10 +1,9 @@
 import React from "react";
 import { Set } from "typescript";
 
-export interface todolist {
+export interface todolist_set {
   date: string;
   text: string;
-  complete?: boolean;
 }
 
 export interface checkbox {
@@ -18,7 +17,11 @@ export interface todoText {
   children: React.ReactNode;
 }
 
-export interface todolistProps extends todolist {
+export interface todolistProps {
+  date: string;
+  text: string;
+  incompleteTodo: Set<any>;
+  setIncompleteTodo: React.Dispatch<React.SetStateAction<any>>;
   completeTodo: Set<any>;
   setCompleteTodo: React.Dispatch<React.SetStateAction<any>>;
 }
