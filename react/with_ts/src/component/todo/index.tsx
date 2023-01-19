@@ -10,7 +10,6 @@ function Todo() {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [todoText, setTodoText] = useState<string>("");
 
-  // 완료시 컴포넌트 강제 리렌더링 =>  완료
   const [rerender, setRerender] = useState<boolean>(false);
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
