@@ -21,4 +21,6 @@ export interface incompleteTodolistProps extends todolist {
   setIncompleteTodo: React.Dispatch<React.SetStateAction<any>>;
   completeTodo: Set<any>;
   setCompleteTodo: React.Dispatch<React.SetStateAction<any>>;
+  rerender: boolean;
+  setRerender: React.Dispatch<React.SetStateAction<any>>;
 }
