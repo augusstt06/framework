@@ -8,7 +8,6 @@ export interface todolist_set {
 
 export interface checkbox {
   complete?: boolean;
-
   completeHandler: ({ target }: any) => void;
 }
 
@@ -17,9 +16,7 @@ export interface todoText {
   children: React.ReactNode;
 }
 
-export interface todolistProps {
-  date: string;
-  text: string;
+export interface incompleteTodolistProps extends todolist_set {
   incompleteTodo: Set<any>;
   setIncompleteTodo: React.Dispatch<React.SetStateAction<any>>;
   completeTodo: Set<any>;
