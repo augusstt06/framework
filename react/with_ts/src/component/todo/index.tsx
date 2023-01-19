@@ -2,7 +2,8 @@ import React, { FormEvent, useState } from "react";
 import { todolist_set } from "../../type";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TodoList from "./each_func/todolist";
+import { TodoListIncomplete, TodolistComplete } from "./each_func/todolist";
+import { useEffect } from "react";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
@@ -20,8 +21,7 @@ function Todo() {
 
   const [completeTodo, setCompleteTodo] = useState(new Set<todolist_set>());
   const [incompleteTodo, setIncompleteTodo] = useState(new Set<todolist_set>());
-  console.log(incompleteTodo, "안한거");
-  console.log(completeTodo, "한거");
+
   const complete_arr = Array.from(completeTodo);
   const incomplete_arr = Array.from(incompleteTodo);
   // set에 들어갈 객체 수정하기
@@ -39,6 +39,7 @@ function Todo() {
     setStartDate(new Date());
     e.preventDefault();
   };
+  useEffect(() => {}, [complete_arr]);
 
   return (
     <div>
@@ -61,7 +62,7 @@ function Todo() {
       {incomplete_arr && incomplete_arr.length !== 0 ? (
         incomplete_arr.map((data) => (
           <div key={data.date}>
-            <TodoList
+            <TodoListIncomplete
               date={data.date}
               text={data.text}
               incompleteTodo={incompleteTodo}
@@ -78,14 +79,7 @@ function Todo() {
       {complete_arr && complete_arr.length !== 0 ? (
         complete_arr.map((data) => (
           <div key={data.date}>
-            <TodoList
-              date={data.date}
-              text={data.text}
-              incompleteTodo={incompleteTodo}
-              setIncompleteTodo={setIncompleteTodo}
-              completeTodo={completeTodo}
-              setCompleteTodo={setCompleteTodo}
-            />
+            <TodolistComplete date={data.date} text={data.text} />
           </div>
         ))
       ) : (

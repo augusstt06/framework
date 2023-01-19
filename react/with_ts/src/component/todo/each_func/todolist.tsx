@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { todolistProps } from "../../../type";
+import { incompleteTodolistProps, todolist_set } from "../../../type";
 import TodoText from "./todoText";
 import Checkbox from "./checkbox";
 
 // 이 컴포넌트에서 각각의 할일에 대한 체크박스, 텍스트 등을 종합
 // 받아와야 할것 : 할일의 각각 목록, 완료 여부, 날짜
 
-function TodoList(props: todolistProps) {
+export function TodoListIncomplete(props: incompleteTodolistProps) {
   const [complete, setComplete] = useState<boolean>(false);
 
   const completeTodo = props.completeTodo;
@@ -39,9 +39,9 @@ function TodoList(props: todolistProps) {
       setCompleteTodo(completeTodo);
     }
   };
+
   const completeHandler = ({ target }: any) => {
     setComplete(!complete);
-
     checkboxHandler(props.text, target.checked);
   };
   return (
@@ -50,13 +50,18 @@ function TodoList(props: todolistProps) {
         <p>날짜 : {props.date}</p>
         <p>{props.text}</p>
       </TodoText>
-      {complete === true ? (
-        <div>삭제만 만들어 놓기</div>
-      ) : (
-        <Checkbox complete={complete} completeHandler={completeHandler} />
-      )}
-      {/* <Checkbox complete={complete} completeHandler={completeHandler} /> */}
+      <Checkbox complete={complete} completeHandler={completeHandler} />
     </div>
   );
 }
-export default TodoList;
+
+export function TodolistComplete(props: todolist_set) {
+  return (
+    <div>
+      <TodoText>
+        <p>날짜 : {props.date}</p>
+        <p>{props.text}</p>
+      </TodoText>
+    </div>
+  );
+}
