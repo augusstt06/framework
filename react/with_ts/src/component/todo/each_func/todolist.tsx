@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { incompleteTodolistProps, todolist_set } from "../../../type";
+import { incompleteTodolistProps, todolist } from "../../../type";
 import TodoText from "./todoText";
 import Checkbox from "./checkbox";
 
-// 이 컴포넌트에서 각각의 할일에 대한 체크박스, 텍스트 등을 종합
-// 받아와야 할것 : 할일의 각각 목록, 완료 여부, 날짜
+// 컴포넌트 역할 : text, date, complete 여부를 받아와서 종합하는 컴포넌트
+// 하위 컴포넌트 : checkbox, Todotext,
 
 export function TodoListIncomplete(props: incompleteTodolistProps) {
   const [complete, setComplete] = useState<boolean>(false);
@@ -55,7 +55,7 @@ export function TodoListIncomplete(props: incompleteTodolistProps) {
   );
 }
 
-export function TodolistComplete(props: todolist_set) {
+export function TodolistComplete(props: todolist) {
   return (
     <div>
       <TodoText>

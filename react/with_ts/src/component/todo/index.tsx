@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { todolist_set } from "../../type";
+import { todolist } from "../../type";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { TodoListIncomplete, TodolistComplete } from "./each_func/todolist";
@@ -19,8 +19,8 @@ function Todo() {
     setTodoText(e.target.value);
   };
 
-  const [completeTodo, setCompleteTodo] = useState(new Set<todolist_set>());
-  const [incompleteTodo, setIncompleteTodo] = useState(new Set<todolist_set>());
+  const [completeTodo, setCompleteTodo] = useState(new Set<todolist>());
+  const [incompleteTodo, setIncompleteTodo] = useState(new Set<todolist>());
 
   const complete_arr = Array.from(completeTodo);
   const incomplete_arr = Array.from(incompleteTodo);
@@ -39,8 +39,7 @@ function Todo() {
     setStartDate(new Date());
     e.preventDefault();
   };
-  useEffect(() => {}, [complete_arr]);
-
+  // 렌더링 바로 되게 바꾸기
   return (
     <div>
       <div>
