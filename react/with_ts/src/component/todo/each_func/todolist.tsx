@@ -11,30 +11,51 @@ function TodoList(props: todolistProps) {
 
   const completeTodo = props.completeTodo;
   const setCompleteTodo = props.setCompleteTodo;
+  const incompleteTodo = props.incompleteTodo;
+  const setIncompleteTodo = props.setIncompleteTodo;
 
-  const checkboxHandler = (date: string, text: string, isComplete: boolean) => {
+  const checkboxHandler = (text: string, isComplete: boolean) => {
     if (isComplete) {
-      completeTodo.add(date);
-      completeTodo.add(text);
+      const newTodo = {
+        date: String(props.date),
+        text: props.text,
+      };
+
+      completeTodo.add(newTodo);
       setCompleteTodo(completeTodo);
+
+      incompleteTodo.forEach((data) =>
+        JSON.stringify(data) === JSON.stringify(newTodo)
+          ? incompleteTodo.delete(data)
+          : ""
+      );
+      setIncompleteTodo(incompleteTodo);
     } else if (!isComplete && completeTodo.has(text)) {
-      completeTodo.delete(date);
-      completeTodo.delete(text);
+      const newTodo = {
+        date: String(props.date),
+        text: props.text,
+      };
+      completeTodo.delete(newTodo);
       setCompleteTodo(completeTodo);
     }
   };
   const completeHandler = ({ target }: any) => {
     setComplete(!complete);
-    checkboxHandler(props.date, props.text, target.checked);
+
+    checkboxHandler(props.text, target.checked);
   };
   return (
     <div>
-      <TodoText complete={props.complete}>
+      <TodoText>
         <p>날짜 : {props.date}</p>
         <p>{props.text}</p>
-        <p>완료 여부 : {props.complete ? "완료" : "미완료"} </p>
       </TodoText>
-      <Checkbox complete={complete} completeHandler={completeHandler} />
+      {complete === true ? (
+        <div>삭제만 만들어 놓기</div>
+      ) : (
+        <Checkbox complete={complete} completeHandler={completeHandler} />
+      )}
+      {/* <Checkbox complete={complete} completeHandler={completeHandler} /> */}
     </div>
   );
 }
