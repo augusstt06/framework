@@ -1,7 +1,7 @@
 import React from "react";
 import { Set } from "typescript";
 
-export interface todolist_set {
+export interface todolist {
   date: string;
   text: string;
 }
@@ -16,7 +16,7 @@ export interface todoText {
   children: React.ReactNode;
 }
 
-export interface incompleteTodolistProps extends todolist_set {
+export interface incompleteTodolistProps extends todolist {
   incompleteTodo: Set<any>;
   setIncompleteTodo: React.Dispatch<React.SetStateAction<any>>;
   completeTodo: Set<any>;
