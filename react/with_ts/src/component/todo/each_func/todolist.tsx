@@ -43,6 +43,7 @@ export function TodoListIncomplete(props: incompleteTodolistProps) {
   const completeHandler = ({ target }: any) => {
     setComplete(!complete);
     checkboxHandler(props.text, target.checked);
+    props.setRerender(!props.rerender);
   };
   return (
     <div>

@@ -3,17 +3,15 @@ import { todolist } from "../../type";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { TodoListIncomplete, TodolistComplete } from "./each_func/todolist";
-import { useEffect } from "react";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
-
-// 완료된 할것에선 체크박스빼기
-// 완료되면 바로 렌더링 되게 바꾸기
-
 function Todo() {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [todoText, setTodoText] = useState<string>("");
+
+  // 완료시 컴포넌트 강제 리렌더링 =>  완료
+  const [rerender, setRerender] = useState<boolean>(false);
 
   const handleText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoText(e.target.value);
@@ -24,7 +22,6 @@ function Todo() {
 
   const complete_arr = Array.from(completeTodo);
   const incomplete_arr = Array.from(incompleteTodo);
-  // set에 들어갈 객체 수정하기
   // 삭제 버튼 만들기
 
   const registerTodo_set = (e: FormEvent<HTMLButtonElement>) => {
@@ -39,7 +36,6 @@ function Todo() {
     setStartDate(new Date());
     e.preventDefault();
   };
-  // 렌더링 바로 되게 바꾸기
   return (
     <div>
       <div>
@@ -68,6 +64,8 @@ function Todo() {
               setIncompleteTodo={setIncompleteTodo}
               completeTodo={completeTodo}
               setCompleteTodo={setCompleteTodo}
+              rerender={rerender}
+              setRerender={setRerender}
             />
           </div>
         ))
