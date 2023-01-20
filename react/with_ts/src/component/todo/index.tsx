@@ -6,6 +6,7 @@ import { TodoListIncomplete, TodolistComplete } from "./each_func/todolist";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
+// 완료한것도 해야 하나??
 function Todo() {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [todoText, setTodoText] = useState<string>("");
@@ -24,7 +25,7 @@ function Todo() {
 
   const registerTodo_set = (e: FormEvent<HTMLButtonElement>) => {
     const newTodo = {
-      // 우선 변환만 시켜놓고 추후에 수정 => 날짜 타입 수정
+      // 날짜로 들어오는 데이터 다루기 좋은 형식으로 바꾸기
       date: String(startDate),
       text: todoText,
     };
