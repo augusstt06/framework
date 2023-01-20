@@ -21,7 +21,6 @@ function Todo() {
 
   const complete_arr = Array.from(completeTodo);
   const incomplete_arr = Array.from(incompleteTodo);
-  // 삭제 버튼 만들기
 
   const registerTodo_set = (e: FormEvent<HTMLButtonElement>) => {
     const newTodo = {
