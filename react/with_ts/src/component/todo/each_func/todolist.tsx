@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { incompleteTodolistProps, todolist } from "../../../type";
 import TodoText from "./todoText";
 import Checkbox from "./checkbox";
@@ -14,13 +14,39 @@ export function TodoListIncomplete(props: incompleteTodolistProps) {
   const incompleteTodo = props.incompleteTodo;
   const setIncompleteTodo = props.setIncompleteTodo;
 
-  const checkboxHandler = (text: string, isComplete: boolean) => {
+  const deleteTodo = (isComplete: boolean) => {
+    const to_delete = {
+      date: String(props.date),
+      text: props.text,
+    };
     if (isComplete) {
-      const newTodo = {
-        date: String(props.date),
-        text: props.text,
-      };
+      completeTodo.forEach((data) =>
+        JSON.stringify(data) === JSON.stringify(to_delete)
+          ? completeTodo.delete(data)
+          : ""
+      );
+      setCompleteTodo(completeTodo);
+    } else if (!isComplete) {
+      incompleteTodo.forEach((data) =>
+        JSON.stringify(data) === JSON.stringify(to_delete)
+          ? incompleteTodo.delete(data)
+          : ""
+      );
+      setIncompleteTodo(incompleteTodo);
+    }
+  };
+  const do_delete = () => {
+    deleteTodo(complete);
+    props.setRerender(!props.rerender);
+  };
 
+  const checkboxHandler = (text: string, isComplete: boolean) => {
+    const newTodo = {
+      date: String(props.date),
+      text: props.text,
+    };
+
+    if (isComplete) {
       completeTodo.add(newTodo);
       setCompleteTodo(completeTodo);
 
@@ -31,10 +57,6 @@ export function TodoListIncomplete(props: incompleteTodolistProps) {
       );
       setIncompleteTodo(incompleteTodo);
     } else if (!isComplete && completeTodo.has(text)) {
-      const newTodo = {
-        date: String(props.date),
-        text: props.text,
-      };
       completeTodo.delete(newTodo);
       setCompleteTodo(completeTodo);
     }
@@ -52,6 +74,7 @@ export function TodoListIncomplete(props: incompleteTodolistProps) {
         <p>{props.text}</p>
       </TodoText>
       <Checkbox complete={complete} completeHandler={completeHandler} />
+      <button onClick={do_delete}>삭제</button>
     </div>
   );
 }
