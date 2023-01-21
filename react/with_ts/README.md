@@ -49,5 +49,6 @@
    - 작성한 할 일이 얼마나 달성되었는지 시각적으로 표현되어야 한다.
 
    - 진도상태바 를 통하여 구현 예정
+   - **`npm install --save react-circular-progressbar`**
 
 ---
