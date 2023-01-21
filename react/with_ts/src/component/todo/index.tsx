@@ -3,6 +3,7 @@ import { todolist } from "../../type";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { TodoListIncomplete, TodolistComplete } from "./each_func/todolist";
+import Progress from "../progress";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
@@ -38,6 +39,10 @@ function Todo() {
 
   return (
     <div>
+      <Progress
+        totalTodo={complete_arr.length + incomplete_arr.length}
+        completeTodo={complete_arr.length}
+      />
       <div>
         <DatePicker
           selected={startDate}

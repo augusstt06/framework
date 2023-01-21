@@ -24,3 +24,8 @@ export interface incompleteTodolistProps extends todolist {
   rerender: boolean;
   setRerender: React.Dispatch<React.SetStateAction<any>>;
 }
+
+export interface progressbar {
+  totalTodo: number;
+  completeTodo: number;
+}
