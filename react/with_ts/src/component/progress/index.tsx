@@ -7,19 +7,23 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 function Progress(props: progressbar) {
   const totalTodo = props.totalTodo;
   const completeTodo = props.completeTodo;
+
+  const completePercent = (completeTodo / totalTodo) * 100;
+
   return (
     <div>
       <CircularProgressbarWithChildren
-        value={10}
+        value={completePercent}
+        text={
+          totalTodo === 0 ? "할 일을 입력해주세요" : `${completePercent}% 완료!`
+        }
         styles={{
-          root: { height: "100px" },
-          path: {
-            stroke: "#4fce84",
-            strokeLinecap: "butt",
-            transition: "stroke-dashoffset 0.5s ease 0s",
-          },
-          trail: {
-            stroke: "#d7d7d7",
+          root: {
+            display: "flex",
+            height: "100px",
+            width: "200px",
+            fontSize: "15px",
+            background: "beige",
           },
         }}
       >
