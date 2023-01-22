@@ -29,7 +29,6 @@ function Progress(props: progressbar) {
             stroke: `rgba(62, 152, 199, ${completePercent / 100})`,
             strokeLinecap: "butt",
             transition: "stroke-dashoffset 0.5s ease 0s",
-            // transform: "rotate(0.25turn)",
             transformOrigin: "center center",
           },
           trail: {
