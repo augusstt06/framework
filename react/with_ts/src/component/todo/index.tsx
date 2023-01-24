@@ -7,7 +7,7 @@ import Progress from "../progress";
 
 // useState = 사용자가 입력할때마다 값을 받아온다
 // useRef = 사용자가 입력을 마치고 submit을 누를때 값을 받아온다.
-// 완료한것도 해야 하나??
+
 function Todo() {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [todoText, setTodoText] = useState<string>("");
@@ -47,6 +47,7 @@ function Todo() {
         <DatePicker
           selected={startDate}
           onChange={(date: Date) => setStartDate(date)}
+          minDate={new Date()}
         />
         <input
           placeholder="할 일을 입력하세요"
