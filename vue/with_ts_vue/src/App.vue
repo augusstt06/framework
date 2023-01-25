@@ -16,6 +16,9 @@ import { todolist } from "./type";
       todoText: "" as string,
       rerender: false as boolean,
       completeTodo: new Set(),
+      complete_arr: Array.from(this.completeTodo),
+      incompleteTodo: new Set(),
+      incomplete_arr: Array.from(this.incompleteTodo),
     };
   },
   methods: {},
@@ -24,6 +27,8 @@ export default class App extends Vue {
   // !는 해당 변수에 값이 무조건 할당되어있다는 뜻
   todoText!: string;
   startDate!: string;
+  rerender!: boolean;
+  completeTodo?: Set<any>;
 }
 </script>
 
