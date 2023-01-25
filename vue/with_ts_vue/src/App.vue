@@ -21,7 +21,14 @@ import { todolist } from "./type";
       incomplete_arr: Array.from(this.incompleteTodo),
     };
   },
-  methods: {},
+  methods: {
+    registerTodo() {
+      const newTodo = {
+        date: this.startDate,
+        text: this.todoText,
+      };
+    },
+  },
 })
 export default class App extends Vue {
   // !는 해당 변수에 값이 무조건 할당되어있다는 뜻
