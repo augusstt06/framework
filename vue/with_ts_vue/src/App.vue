@@ -1,7 +1,12 @@
 <template>
   <div>Framework practice</div>
   <div>
-    <DatePicker selected="startDate" v-model="startDate" minDate="date" />
+    <DatePicker
+      selected="startDate"
+      v-model="startDate"
+      :min-date="new Date()"
+      style="width: 300px"
+    />
   </div>
   <input placeholder="할일을 입력하세요" v-model="todoText" />
   <button @click="registerTodo">q버튼</button>
@@ -40,6 +45,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
 })
 export default class App extends Vue {
   // !는 해당 변수에 값이 무조건 할당되어있다는 뜻
+
   todoText!: string;
   startDate!: string;
   rerender!: boolean;
