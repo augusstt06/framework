@@ -1,12 +1,12 @@
 <template>
   <div>Framework practice</div>
   <input placeholder="할일을 입력하세요" v-model="todoText" />
+  <button @click="registerTodo"></button>
   <a>{{ todoText }}</a>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { todolist } from "./type";
 
 @Options({
   components: {},
@@ -27,6 +27,7 @@ import { todolist } from "./type";
         date: this.startDate,
         text: this.todoText,
       };
+      this.incompleteTodo.add(newTodo);
     },
   },
 })
@@ -36,6 +37,7 @@ export default class App extends Vue {
   startDate!: string;
   rerender!: boolean;
   completeTodo?: Set<any>;
+  registerTodo!: () => void;
 }
 </script>
 
