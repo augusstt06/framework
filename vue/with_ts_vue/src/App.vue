@@ -1,24 +1,31 @@
 <template>
   <div>Framework practice</div>
+  <div>
+    <DatePicker selected="startDate" v-model="startDate" minDate="date" />
+  </div>
   <input placeholder="할일을 입력하세요" v-model="todoText" />
-  <button @click="registerTodo"></button>
+  <button @click="registerTodo">q버튼</button>
   <a>{{ todoText }}</a>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import DatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
+// incompleteArr은 변수로 넣기
 @Options({
-  components: {},
+  components: { DatePicker },
   data() {
     return {
+      date: new Date(),
       startDate: String(new Date()),
       todoText: "" as string,
       rerender: false as boolean,
       completeTodo: new Set(),
-      complete_arr: Array.from(this.completeTodo),
+      completeTodo_arr: [],
       incompleteTodo: new Set(),
-      incomplete_arr: Array.from(this.incompleteTodo),
+      incompleteTodo_arr: [],
     };
   },
   methods: {
