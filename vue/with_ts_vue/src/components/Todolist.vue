@@ -2,7 +2,8 @@
   <div>
     <a>날짜 : {{ startDate }}</a>
     <a>{{ todoText }}</a>
-    <Checkbox :complete="complete" />
+    <a>{{ complete }}</a>
+    <Checkbox :complete="complete" :checkHandler="checkHandler" />
   </div>
 </template>
 <script lang="ts">
@@ -24,6 +25,9 @@ import Checkbox from "./Checkbox.vue";
     };
   },
   methods: {
+    checkHandler() {
+      this.complete = !this.complete;
+    },
     deleteTodo(isComplete: boolean) {
       const toDelete = {
         date: this.startDate,
@@ -52,5 +56,6 @@ export default class Todolist extends Vue {
   completeTodo?: Set<any>;
   incompleteTodo?: Set<any>;
   complete!: boolean;
+  checkHandler!: () => void;
 }
 </script>

@@ -6,7 +6,8 @@
       true-value="yes"
       false-value="no"
     /> -->
-    <input type="checkbox" :value="complete" />
+    <input type="checkbox" />
+    <button @click="checkHandler">씨발련아</button>
   </div>
 </template>
 
@@ -17,9 +18,17 @@ import { Options, Vue } from "vue-class-component";
   components: {},
   props: {
     complete: Boolean,
+    checkHandler: Function,
+  },
+  methods: {
+    // checkHandler() {
+    //   console.log(this.complete);
+    //   this.complete = !this.complete;
+    // },
   },
 })
 export default class Checkbox extends Vue {
   complete?: boolean;
+  checkHandler!: () => void;
 }
 </script>
