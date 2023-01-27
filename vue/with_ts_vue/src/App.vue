@@ -9,10 +9,10 @@
     />
   </div>
   <input placeholder="할일을 입력하세요" v-model="todoText" />
-  <button @click="registerTodo">q버튼</button>
+  <button @click="registerTodo">등록</button>
   <a>{{ todoText }}</a>
-  <div>
-    <a v-for="i in incomplete_arr" v-bind:key="i.date">{{ i }}</a>
+  <div v-for="i in incompleteTodo_arr" v-bind:key="i.date">
+    <a>{{ `날짜 : ${i.date} 할일 : ${i.text}` }}</a>
   </div>
 </template>
 
@@ -46,7 +46,8 @@ import "@vuepic/vue-datepicker/dist/main.css";
       this.incompleteTodo.add(newTodo);
       this.incompleteTodo_arr.push(newTodo);
       console.log(this.incompleteTodo_arr);
-      console.log(typeof this.incompleteTodo_arr);
+      this.todoText = "";
+      this.startDate = new Date();
     },
   },
 })
@@ -57,7 +58,7 @@ export default class App extends Vue {
   rerender!: boolean;
   completeTodo?: Set<any>;
   registerTodo!: () => void;
-  incomplete_arr!: Array<todolist>;
+  incompleteTodo_arr!: Array<todolist>;
 }
 </script>
 
