@@ -10,9 +10,15 @@
   </div>
   <input placeholder="할일을 입력하세요" v-model="todoText" />
   <button @click="registerTodo">등록</button>
-  <a>{{ todoText }}</a>
+
   <div v-for="i in incompleteTodo_arr" v-bind:key="i.date">
-    <a>{{ `날짜 : ${i.date} 할일 : ${i.text}` }}</a>
+    <Todolist
+      :startDate="i.date"
+      :todoText="i.text"
+      :incompleteTodo="incompleteTodo"
+      :completeTodo="completeTodo"
+      :rerender="rerender"
+    />
   </div>
 </template>
 
@@ -20,11 +26,12 @@
 import { Options, Vue } from "vue-class-component";
 import { todolist } from "./type";
 import DatePicker from "@vuepic/vue-datepicker";
+import Todolist from "./components/Todolist.vue";
 import "@vuepic/vue-datepicker/dist/main.css";
 
 // incompleteArr 어떻게 할까
 @Options({
-  components: { DatePicker },
+  components: { DatePicker, Todolist },
   data() {
     return {
       date: new Date(),
@@ -45,7 +52,6 @@ import "@vuepic/vue-datepicker/dist/main.css";
       };
       this.incompleteTodo.add(newTodo);
       this.incompleteTodo_arr.push(newTodo);
-      console.log(this.incompleteTodo_arr);
       this.todoText = "";
       this.startDate = new Date();
     },
@@ -57,6 +63,7 @@ export default class App extends Vue {
   startDate!: string;
   rerender!: boolean;
   completeTodo?: Set<any>;
+  incompleteTodo?: Set<any>;
   registerTodo!: () => void;
   incompleteTodo_arr!: Array<todolist>;
 }
