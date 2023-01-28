@@ -20,12 +20,7 @@ import { Options, Vue } from "vue-class-component";
     complete: Boolean,
     checkHandler: Function,
   },
-  methods: {
-    // checkHandler() {
-    //   console.log(this.complete);
-    //   this.complete = !this.complete;
-    // },
-  },
+  methods: {},
 })
 export default class Checkbox extends Vue {
   complete?: boolean;
