@@ -7,7 +7,6 @@
       false-value="no"
     /> -->
     <input type="checkbox" />
-    <button @click="checkHandler">씨발련아</button>
   </div>
 </template>
 
