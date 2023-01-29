@@ -26,12 +26,12 @@
 import { Options, Vue } from "vue-class-component";
 import { todolist } from "./type";
 import DatePicker from "@vuepic/vue-datepicker";
-import Todolist from "./components/Todolist.vue";
+import Todolist_Incomplete from "./components/Todolist_Incomplete.vue";
 import "@vuepic/vue-datepicker/dist/main.css";
 
 // incompleteArr 어떻게 할까
 @Options({
-  components: { DatePicker, Todolist },
+  components: { DatePicker, Todolist_Incomplete },
   data() {
     return {
       date: new Date(),

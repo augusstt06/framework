@@ -49,7 +49,7 @@ import Checkbox from "./Checkbox.vue";
     },
   },
 })
-export default class Todolist extends Vue {
+export default class Todolist_Incomplete extends Vue {
   todoText!: string;
   startDate!: string;
   rerender!: boolean;
