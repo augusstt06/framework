@@ -1,12 +1,6 @@
 <template>
   <div>
-    <!-- <input
-      type="checkbox"
-      v-model="agreement"
-      true-value="yes"
-      false-value="no"
-    /> -->
-    <input type="checkbox" />
+    <input type="checkbox" @click="checkHandler" />
   </div>
 </template>
 
