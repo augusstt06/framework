@@ -4,12 +4,13 @@
     <a>{{ todoText }}</a>
     <a>{{ complete }}</a>
     <Checkbox :complete="complete" :checkHandler="checkHandler" />
+    <button @click="deleteTodo">삭제</button>
   </div>
 </template>
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Checkbox from "./Checkbox.vue";
-
+// 체크를 해도 완료로 안넘어가는 문제
 @Options({
   components: { Checkbox },
   props: {
@@ -27,6 +28,7 @@ import Checkbox from "./Checkbox.vue";
   methods: {
     checkHandler() {
       this.complete = !this.complete;
+      this.rerender = !this.rerender;
     },
     deleteTodo(isComplete: boolean) {
       const toDelete = {
@@ -57,5 +59,6 @@ export default class Todolist_Incomplete extends Vue {
   incompleteTodo?: Set<any>;
   complete!: boolean;
   checkHandler!: () => void;
+  deleteTodo!: () => void;
 }
 </script>
