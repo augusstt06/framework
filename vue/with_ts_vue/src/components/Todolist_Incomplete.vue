@@ -23,17 +23,19 @@ import Checkbox from "./Checkbox.vue";
   },
   data() {
     return {
-      complete: false,
+      child_rerender: String,
+      child_complete: false,
     };
   },
   methods: {
     checkHandler() {
-      // this.complete = !this.complete;
-      // this.rerender = "강제 리렌더 완료";
-      this.$emit(
-        "check",
-        ((this.rerender = "강제 리렌더 완료"), !this.complete)
-      );
+      this.child_rerender = "강제 리렌더 완료";
+      if (this.child_complete) {
+        this.child_complete = false;
+      } else {
+        this.child_complete = true;
+      }
+      this.$emit("check", this.child_complete);
     },
     deleteTodo(isComplete: boolean) {
       const toDelete = {
