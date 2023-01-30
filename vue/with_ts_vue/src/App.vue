@@ -15,7 +15,7 @@
   <h3>완료 하지 않은 할일</h3>
   <div v-for="i in incompleteTodo_arr" v-bind:key="i.date">
     <Todolist_Incomplete
-      @check="checkHandler"
+      @check="check_emit"
       :startDate="i.date"
       :todoText="i.text"
       :incompleteTodo="incompleteTodo"
@@ -63,6 +63,9 @@ import "@vuepic/vue-datepicker/dist/main.css";
       this.todoText = "";
       this.startDate = new Date();
     },
+    check_emit(value: any) {
+      console.log(value);
+    },
   },
 })
 export default class App extends Vue {
@@ -75,7 +78,7 @@ export default class App extends Vue {
   registerTodo!: () => void;
   incompleteTodo_arr!: Array<todolist>;
   completeTodo_arr!: Array<todolist>;
-  checkHandler?: () => void;
+  check_emit?: () => void;
 }
 </script>
 

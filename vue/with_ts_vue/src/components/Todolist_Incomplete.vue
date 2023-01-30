@@ -19,7 +19,7 @@ import Checkbox from "./Checkbox.vue";
     todoText: String,
     incompleteTodo: Set,
     completeTodo: Set,
-    rerender: Boolean,
+    rerender: String,
   },
   data() {
     return {
@@ -28,10 +28,12 @@ import Checkbox from "./Checkbox.vue";
   },
   methods: {
     checkHandler() {
-      this.complete = !this.complete;
-      this.rerender = "강제 리렌더 완료";
-      this.$emit("check", this.rerender);
-      this.$emit("complete", this.complete);
+      // this.complete = !this.complete;
+      // this.rerender = "강제 리렌더 완료";
+      this.$emit(
+        "check",
+        ((this.rerender = "강제 리렌더 완료"), !this.complete)
+      );
     },
     deleteTodo(isComplete: boolean) {
       const toDelete = {
