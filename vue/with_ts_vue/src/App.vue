@@ -38,6 +38,7 @@ import Todolist_Complete from "./components/Todolist_Complete.vue";
 import "@vuepic/vue-datepicker/dist/main.css";
 
 // incompleteArr 어떻게 할까
+
 @Options({
   components: { DatePicker, Todolist_Incomplete, Todolist_Complete },
   data() {
@@ -65,6 +66,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
     },
     check_emit(value: any) {
       console.log(value);
+      console.log(this.incompleteTodo_arr);
     },
   },
 })

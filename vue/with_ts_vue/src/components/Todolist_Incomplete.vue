@@ -27,6 +27,7 @@ import Checkbox from "./Checkbox.vue";
       child_complete: false,
     };
   },
+  // incompleteArr을 emit하여 부모로 넘긴다.
   methods: {
     checkHandler() {
       this.child_rerender = "강제 리렌더 완료";
