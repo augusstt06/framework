@@ -11,6 +11,7 @@
 import { Options, Vue } from "vue-class-component";
 import Checkbox from "./Checkbox.vue";
 // 체크를 해도 완료로 안넘어가는 문제
+// Vue Emit을 통하여 해보기
 @Options({
   components: { Checkbox },
   props: {
@@ -28,7 +29,9 @@ import Checkbox from "./Checkbox.vue";
   methods: {
     checkHandler() {
       this.complete = !this.complete;
-      this.rerender = !this.rerender;
+      this.rerender = "강제 리렌더 완료";
+      this.$emit("check", this.rerender);
+      this.$emit("complete", this.complete);
     },
     deleteTodo(isComplete: boolean) {
       const toDelete = {
@@ -38,7 +41,7 @@ import Checkbox from "./Checkbox.vue";
       if (isComplete) {
         this.completeTodo.forEach((data: object) =>
           JSON.stringify(data) === JSON.stringify(toDelete)
-            ? this.completeTodo.delete(data)
+            ? this.incompleteTodo.delete(data)
             : ""
         );
       } else if (!isComplete) {
@@ -54,7 +57,7 @@ import Checkbox from "./Checkbox.vue";
 export default class Todolist_Incomplete extends Vue {
   todoText!: string;
   startDate!: string;
-  rerender!: boolean;
+  rerender!: string;
   completeTodo?: Set<any>;
   incompleteTodo?: Set<any>;
   complete!: boolean;

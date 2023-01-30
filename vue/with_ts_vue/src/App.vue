@@ -1,5 +1,6 @@
 <template>
   <div>Framework practice</div>
+  <div>{{ rerender }}</div>
   <div>
     <DatePicker
       selected="startDate"
@@ -14,6 +15,7 @@
   <h3>완료 하지 않은 할일</h3>
   <div v-for="i in incompleteTodo_arr" v-bind:key="i.date">
     <Todolist_Incomplete
+      @check="checkHandler"
       :startDate="i.date"
       :todoText="i.text"
       :incompleteTodo="incompleteTodo"
@@ -43,7 +45,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
       date: new Date(),
       startDate: String(new Date()),
       todoText: "" as string,
-      rerender: false as boolean,
+      rerender: "Force to Rerender",
       completeTodo: new Set(),
       completeTodo_arr: [],
       incompleteTodo: new Set(),
@@ -67,12 +69,13 @@ export default class App extends Vue {
   // !는 해당 변수에 값이 무조건 할당되어있다는 뜻
   todoText!: string;
   startDate!: string;
-  rerender!: boolean;
+  rerender!: string;
   completeTodo?: Set<any>;
   incompleteTodo?: Set<any>;
   registerTodo!: () => void;
   incompleteTodo_arr!: Array<todolist>;
   completeTodo_arr!: Array<todolist>;
+  checkHandler?: () => void;
 }
 </script>
 
