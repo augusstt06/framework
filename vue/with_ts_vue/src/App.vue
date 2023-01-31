@@ -1,5 +1,9 @@
 <template>
   <div>Framework practice</div>
+  {{ testt }}
+  <button @click="test">?</button>
+  <div v-show="testt">뭐지</div>
+  <!-- <div v-else>폴ㅇ스</div> -->
   <div>{{ rerender }}</div>
   <div>
     <DatePicker
@@ -37,6 +41,8 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from "vue";
+
 import DatePicker from "@vuepic/vue-datepicker";
 import Todolist_Incomplete from "./components/Todolist_Incomplete.vue";
 import Todolist_Complete from "./components/Todolist_Complete.vue";
@@ -50,6 +56,11 @@ const completeTodo: Set<todolist> = new Set();
 const completeTodo_arr = Array.from(completeTodo);
 const incompleteTodo: Set<todolist> = new Set();
 const incompleteTodo_arr = Array.from(incompleteTodo);
+let testt = false;
+const test = () => {
+  testt = !testt;
+  console.log(testt);
+};
 
 const registerTodo = () => {
   const newTodo = {
