@@ -1,12 +1,60 @@
 <template>
+  <div>???</div>
   <div>
     <a>날짜 : {{ startDate }}</a>
-    <a>{{ todoText }}</a>
+    <a>할일 : {{ todoText }}</a>
     <a>{{ complete }}</a>
     <Checkbox :complete="complete" :checkHandler="checkHandler" />
-    <button @click="deleteTodo">삭제</button>
+    <!-- <button @click="doDelete">삭제</button> -->
   </div>
 </template>
+<script setup lang="ts">
+import { defineProps, ref } from "vue";
+
+const props = defineProps({
+  startDate: String,
+  todoText: String,
+  incompleteTodo: Set,
+  completeTodo: Set,
+  rerender: String,
+});
+console.log(props, "??");
+let complete = false;
+
+const checkHandler = () => {
+  const child_rerender = "강제 리렌더 완료";
+  if (complete) {
+    complete = false;
+  } else {
+    complete = true;
+  }
+  // this.$emit("check", this.child_complete);
+};
+// const deleteTodo = (isComplete: boolean) => {
+//   const toDelete = {
+//     date: props.startDate,
+//     text: props.todoText,
+//   };
+//   if (isComplete && props.completeTodo) {
+//     props.completeTodo.forEach((data) =>
+//       JSON.stringify(data) === JSON.stringify(toDelete)
+//         ? props.completeTodo.delete(data)
+//         : ""
+//     );
+//   } else if (!isComplete && props.incompleteTodo) {
+//     props.incompleteTodo.forEach((data) =>
+//       JSON.stringify(data) === JSON.stringify(toDelete)
+//         ? props.incompleteTodo.delete(data)
+//         : ""
+//     );
+//   }
+// };
+// const doDelete = () => {
+//   deleteTodo(complete);
+// };
+</script>
+<!-- 
+
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Checkbox from "./Checkbox.vue";
@@ -65,8 +113,8 @@ export default class Todolist_Incomplete extends Vue {
   rerender!: string;
   completeTodo?: Set<any>;
   incompleteTodo?: Set<any>;
-  complete!: boolean;
+  complete?: boolean;
   checkHandler!: () => void;
   deleteTodo!: () => void;
 }
-</script>
+</script> -->
