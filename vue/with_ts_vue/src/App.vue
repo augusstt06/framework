@@ -13,24 +13,60 @@
   <button @click="registerTodo">등록</button>
 
   <h3>완료 하지 않은 할일</h3>
-  <div v-for="i in incompleteTodo_arr" v-bind:key="i.date">
-    <Todolist_Incomplete
-      @check="check_emit"
-      :startDate="i.date"
-      :todoText="i.text"
-      :incompleteTodo="incompleteTodo"
-      :completeTodo="completeTodo"
-      :rerender="rerender"
-    />
+  <div v-if="incompleteTodo_arr && incompleteTodo_arr.length !== 0">
+    <div>??뭔데</div>
+    <div v-for="i in incompleteTodo_arr.length" v-bind:key="i">
+      <Todolist_Incomplete
+        :startDate="incompleteTodo_arr[i].date"
+        :todoText="incompleteTodo_arr[i].text"
+        :incompleteTodo="incompleteTodo"
+        :completeTodo="completeTodo"
+        :rerender="rerender"
+      />
+    </div>
   </div>
   <h3>완료한 할일</h3>
-  <div v-for="i in completeTodo_arr" v-bind:key="i.date">
-    <Todolist_Complete :startDate="i.date" :todoText="i.text" />
+  <!-- <div v-if="completeTodo_arr !== undefined"> -->
+  <div v-for="i in completeTodo_arr.length" v-bind:key="i">
+    <Todolist_Complete
+      :startDate="completeTodo_arr[i].date"
+      :todoText="completeTodo_arr[i].text"
+    />
   </div>
+  <!-- </div> -->
 </template>
 
+<script setup lang="ts">
+import DatePicker from "@vuepic/vue-datepicker";
+import Todolist_Incomplete from "./components/Todolist_Incomplete.vue";
+import Todolist_Complete from "./components/Todolist_Complete.vue";
+import "@vuepic/vue-datepicker/dist/main.css";
+import { todolist } from "./type";
+
+let startDate = String(new Date());
+let todoText = "";
+let rerender = "Force to rerender";
+const completeTodo: Set<todolist> = new Set();
+const completeTodo_arr = Array.from(completeTodo);
+const incompleteTodo: Set<todolist> = new Set();
+const incompleteTodo_arr = Array.from(incompleteTodo);
+
+const registerTodo = () => {
+  const newTodo = {
+    date: startDate,
+    text: todoText,
+  };
+  incompleteTodo.add(newTodo);
+  incompleteTodo_arr.push(newTodo);
+  todoText = "";
+  startDate = String(new Date());
+  rerender = "";
+};
+</script>
+<!-- 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { ref } from "vue";
 import { todolist } from "./type";
 import DatePicker from "@vuepic/vue-datepicker";
 import Todolist_Incomplete from "./components/Todolist_Incomplete.vue";
@@ -51,6 +87,7 @@ import "@vuepic/vue-datepicker/dist/main.css";
       completeTodo_arr: [],
       incompleteTodo: new Set(),
       incompleteTodo_arr: [],
+      testArr: [],
     };
   },
   methods: {
@@ -68,6 +105,11 @@ import "@vuepic/vue-datepicker/dist/main.css";
       console.log(value);
       console.log(this.incompleteTodo_arr);
     },
+    test() {
+      this.testArr.push(1);
+      console.log(this.testArr);
+      console.log(typeof this.testArr);
+    },
   },
 })
 export default class App extends Vue {
@@ -82,6 +124,6 @@ export default class App extends Vue {
   completeTodo_arr!: Array<todolist>;
   check_emit?: () => void;
 }
-</script>
+</script> -->
 
 <style></style>
